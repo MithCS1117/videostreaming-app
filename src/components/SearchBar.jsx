@@ -15,14 +15,14 @@ const SearchBar = () => {
         boxShadow: "none",
         mr: { sm: 5 },
       }}
-    > 
+    >
       <input
         className="search-bar"
         placeholder="Search..."
         value=""
         onChange={() => {}}
       />
-      <IconButton type="submit" sx={{ p: "10px", color: "purple" }}>
+      <IconButton type="submit" sx={{ p: "10px", color: "#9403fc" }}>
         <Search />
       </IconButton>
     </Paper>
