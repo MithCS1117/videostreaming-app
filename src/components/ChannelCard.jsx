@@ -7,10 +7,10 @@ import {
   demoProfilePicture,
 } from "../utils/constants";
 
-const ChannelCard = ({ channelDetail }) => {
+const ChannelCard = ({ channelDetails, marginTop }) => {
   const thumbnailUrl =
-    channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture;
-  const channelTitle = channelDetail?.snippet?.title || demoChannelTitle;
+    channelDetails?.snippet?.thumbnails?.high?.url || demoProfilePicture;
+  const channelTitle = channelDetails?.snippet?.title || demoChannelTitle;
 
   return (
     <Box
@@ -23,9 +23,10 @@ const ChannelCard = ({ channelDetail }) => {
         width: { xs: "356px", md: "320px" },
         height: "326px",
         margin: "auto",
+        marginTop: marginTop,
       }}
     >
-      <Link to={`channel/${channelDetail?.id.channelId}`}>
+      <Link to={`channel/${channelDetails?.id.channelId}`}>
         <CardContent
           sx={{
             display: "flex",
@@ -52,10 +53,10 @@ const ChannelCard = ({ channelDetail }) => {
           </Typography>
 
           {/* Channel stats */}
-          {channelDetail?.statistics?.subscriberCount && (
+          {channelDetails?.statistics?.subscriberCount && (
             <Typography>
               {parseInt(
-                channelDetail?.statistics.subscriberCount
+                channelDetails?.statistics.subscriberCount
               ).toLocaleString()}{" "}
               Subscribers
             </Typography>
