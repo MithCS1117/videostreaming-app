@@ -35,14 +35,14 @@ a {
 }
 
 .react-player {
-  height: 77vh !important;
+  height: 60vh !important;
   width: 100% !important;
 }
 
 .search-bar{
   border:none;
   outline:none;
-  width:350px;
+  width:300px;
 }
 
 .category-btn{
@@ -83,6 +83,6 @@ a {
     height: 45vh !important;
   }
   .search-bar{
-    width:200px;
+    width:150px;
   }
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
+import LoopIcon from "@mui/icons-material/Loop";
 import { Sidebar, Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
@@ -12,6 +13,8 @@ const Feed = () => {
       setVideos(data.items);
     });
   }, [selectedCategory]);
+
+  if (!videos?.length) return <LoopIcon />;
 
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>

@@ -1,8 +1,9 @@
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import HomeIcon from "@mui/icons-material/Home";
 import CodeIcon from "@mui/icons-material/Code";
-import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
-import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import MovieIcon from "@mui/icons-material/Movie";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import SportsCricketIcon from "@mui/icons-material/SportsCricket";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import SchoolIcon from "@mui/icons-material/School";
 import FaceRetouchingNaturalIcon from "@mui/icons-material/FaceRetouchingNatural";
@@ -10,28 +11,31 @@ import CheckroomIcon from "@mui/icons-material/Checkroom";
 import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 import TheaterComedyIcon from "@mui/icons-material/TheaterComedy";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
 
 export const logo = "../assets/logo.png";
 
 export const categories = [
   { name: "New", icon: <HomeIcon /> },
-  { name: "JS Mastery", icon: <CodeIcon /> },
+  { name: "Trending", icon: <WhatshotIcon /> },
+  { name: "Music", icon: <MusicNoteIcon /> },
+  { name: "Movies", icon: <MovieIcon /> },
+  { name: "Sport", icon: <SportsCricketIcon /> },
+  { name: "News", icon: <NewspaperIcon /> },
+  { name: "Live", icon: <LiveTvIcon /> },
+  { name: "Gaming", icon: <SportsEsportsIcon /> },
+  { name: "Beauty", icon: <FaceRetouchingNaturalIcon /> },
+  { name: "Gym", icon: <FitnessCenterIcon /> },
+  { name: "Podcast", icon: <GraphicEqIcon /> },
   { name: "Coding", icon: <CodeIcon /> },
   { name: "ReactJS", icon: <CodeIcon /> },
-  { name: "NextJS", icon: <CodeIcon /> },
-  { name: "Music", icon: <MusicNoteIcon /> },
   { name: "Education", icon: <SchoolIcon /> },
-  { name: "Podcast", icon: <GraphicEqIcon /> },
-  { name: "Movie", icon: <OndemandVideoIcon /> },
-  { name: "Gaming", icon: <SportsEsportsIcon /> },
-  { name: "Live", icon: <LiveTvIcon /> },
-  { name: "Sport", icon: <FitnessCenterIcon /> },
   { name: "Fashion", icon: <CheckroomIcon /> },
-  { name: "Beauty", icon: <FaceRetouchingNaturalIcon /> },
   { name: "Comedy", icon: <TheaterComedyIcon /> },
-  { name: "Gym", icon: <FitnessCenterIcon /> },
-  { name: "Crypto", icon: <DeveloperModeIcon /> },
+  { name: "Shopping", icon: <ShoppingBagIcon /> },
 ];
 
 export const demoThumbnailUrl = "https://i.ibb.co/G2L2Gwp/API-Course.png";

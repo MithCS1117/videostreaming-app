@@ -1,8 +1,8 @@
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
-// import { logo } from "../utils/constants.js";
 import logo from "../assets/logo.png";
 import SearchBar from "./SearchBar";
+import { Typography } from "@mui/material";
 
 const Navbar = () => {
   return (
@@ -19,6 +19,18 @@ const Navbar = () => {
     >
       <Link to="/" style={{ display: "flex", alignItems: "center" }}>
         <img src={logo} alt="logo" height={45} />
+        <Typography
+          fontWeight="bold"
+          ml={1}
+          sx={{ color: "white" }}
+          display="flex"
+          flexDirection="row"
+        >
+          <Typography variant="h4">Vid</Typography>
+          <Typography variant="h4" sx={{ color: "#9403fc" }}>
+            Tube
+          </Typography>
+        </Typography>
       </Link>
       <SearchBar />
     </Stack>

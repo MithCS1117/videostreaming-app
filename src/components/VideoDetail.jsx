@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { Typography, Box, Stack } from "@mui/material";
+import { Typography, Button, Box, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 
 import { Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
@@ -16,26 +18,22 @@ const VideoDetail = () => {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
       setVideoDetail(data.items[0])
     );
-    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
-      (data) => setVideos(data.items)
-    );
   }, [id]);
 
   if (!videoDetail?.snippet) return "Loading..";
 
   const {
-    snippet: { title, channelId, channelTitle },
-    statistics: { viewCount, likeCount },
+    snippet: { title, channelId, channelTitle, description },
+    statistics: { viewCount, likeCount, subscriberCount },
   } = videoDetail;
 
   return (
-    <Box minHeight="95vh">
+    <Box minHeight="100vh">
       <Stack direction={{ xs: "column", md: "row" }}>
         <Box flex={1}>
           <Box
             sx={{
               widht: "100%",
-              // height: "50%",
               position: "sticky",
               top: "86px",
             }}
@@ -66,13 +64,23 @@ const VideoDetail = () => {
                   />
                 </Typography>
               </Link>
+              {/* Channel stats */}
+              {subscriberCount && (
+                <Typography color="#fff">
+                  {parseInt(subscriberCount).toLocaleString()} Subscribers
+                </Typography>
+              )}
               <Stack direction="row" gap="20px" alignItems="center">
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  startIcon={<VisibilityOutlinedIcon />}
+                >
                   {parseInt(viewCount).toLocaleString()} views
-                </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(likeCount).toLocaleString()} views
-                </Typography>
+                </Button>
+                <Button variant="outlined" startIcon={<ThumbUpOutlinedIcon />}>
+                  {parseInt(likeCount).toLocaleString()}
+                </Button>
               </Stack>
             </Stack>
           </Box>
