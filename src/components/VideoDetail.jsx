@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { Typography, Button, Box, Stack } from "@mui/material";
+import { Typography, Button, Box, Stack, LinearProgress } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
@@ -20,7 +20,12 @@ const VideoDetail = () => {
     );
   }, [id]);
 
-  if (!videoDetail?.snippet) return "Loading..";
+  if (!videoDetail?.length)
+    return (
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress sx={{ backgroundColor: "#9403fc" }} />
+      </Box>
+    );
 
   const {
     snippet: { title, channelId, channelTitle, description },

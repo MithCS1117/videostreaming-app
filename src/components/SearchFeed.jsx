@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
-import LoopIcon from "@mui/icons-material/Loop";
 import { Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { useParams } from "react-router-dom";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const SearchFeed = () => {
   const [videos, setVideos] = useState([]);
@@ -15,7 +15,12 @@ const SearchFeed = () => {
     });
   }, [searchTerm]);
 
-  if (!videos?.length) return <LoopIcon />;
+  if (!videos?.length)
+    return (
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress sx={{ backgroundColor: "#9403fc" }} />
+      </Box>
+    );
 
   return (
     <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>

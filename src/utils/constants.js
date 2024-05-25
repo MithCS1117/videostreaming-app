@@ -12,7 +12,6 @@ import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 import TheaterComedyIcon from "@mui/icons-material/TheaterComedy";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
-import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 

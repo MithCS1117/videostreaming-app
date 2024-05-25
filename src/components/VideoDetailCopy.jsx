@@ -11,6 +11,7 @@ import {
   Grid,
   IconButton,
   Avatar,
+  LinearProgress,
 } from "@mui/material";
 import {
   CheckCircle,
@@ -40,7 +41,12 @@ const VideoDetail = () => {
     );
   }, [id]);
 
-  if (!videoDetail?.snippet) return "Loading..";
+  if (!videos?.length)
+    return (
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress sx={{ backgroundColor: "#9403fc" }} />
+      </Box>
+    );
 
   const {
     snippet: { title, channelId, channelTitle, description, publishedAt },
@@ -48,7 +54,6 @@ const VideoDetail = () => {
   } = videoDetail;
 
   const formattedDate = format(new Date(publishedAt), "dd-MM-yyyy");
-  const monthsAgo = differenceInMonths(new Date(), new Date(publishedAt));
 
   return (
     <Box minHeight="100vh">
@@ -82,13 +87,6 @@ const VideoDetail = () => {
             >
               {title}
             </Typography>
-            {/* <Stack
-              direction="row"
-              // justifyContent="space-between"
-              sx={{ color: "#fff", alignItems: "center", marginTop: "8px" }}
-              // py={1}
-              // px={2}
-            > */}
             <div
               style={{
                 display: "flex",
@@ -164,14 +162,13 @@ const VideoDetail = () => {
                 gutterBottom
                 style={{ color: "#fff", marginBottom: "16px" }}
               >
-                
                 Date Published: {formattedDate}
               </Typography>
               <Typography variant="body1" style={{ color: "#fff" }}>
                 {description}
               </Typography>
             </div>
-            Comment section
+            {/* Comment section */}
             {/* <Typography
                 variant="h6"
                 style={{ marginTop: "24px", color: "#fff" }}

@@ -29,11 +29,6 @@ const SearchBar = () => {
     >
       <input
         className="search-bar"
-        // sx={{
-        //   border: "none",
-        //   outline: "none",
-        //   width: 300,
-        // }}
         placeholder="Search..."
         value={searchTerm}
         onChange={(e) => {

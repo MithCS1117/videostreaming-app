@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Stack, Typography } from "@mui/material";
-import LoopIcon from "@mui/icons-material/Loop";
+import { Box, LinearProgress, Stack, Typography } from "@mui/material";
 import { Sidebar, Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
@@ -14,7 +13,12 @@ const Feed = () => {
     });
   }, [selectedCategory]);
 
-  if (!videos?.length) return <LoopIcon />;
+  if (!videos?.length)
+    return (
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress sx={{ backgroundColor: "#9403fc" }} />
+      </Box>
+    );
 
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
