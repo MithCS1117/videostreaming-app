@@ -1,25 +1,52 @@
+import { format } from "date-fns";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { Typography, Button, Box, Stack, LinearProgress } from "@mui/material";
-import { CheckCircle } from "@mui/icons-material";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import { Videos } from "./";
+import {
+  Typography,
+  Box,
+  Paper,
+  Grid,
+  IconButton,
+  Avatar,
+  LinearProgress,
+  Button,
+} from "@mui/material";
+import { CheckCircle, VisibilityOutlined } from "@mui/icons-material";
+import { ThumbUpAltOutlined } from "@mui/icons-material";
+
+import { Videos } from ".";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
+import { demoProfilePicture } from "../utils/constants";
+
 
 const VideoDetail = () => {
   const { id } = useParams();
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState([]);
+  const [channelDetails, setChannelDetails] = useState(null);
 
   useEffect(() => {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
       setVideoDetail(data.items[0])
     );
+    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
+      (data) => setVideos(data.items)
+    );
   }, [id]);
 
-  if (!videoDetail?.length)
+  useEffect(() => {
+    if (!videoDetail) return;
+    const {
+      snippet: { channelId },
+    } = videoDetail;
+
+    fetchFromAPI(`channels?part=snippet&id=${channelId}`).then((data) =>
+      setChannelDetails(data?.items[0])
+    );
+  }, [videoDetail]);
+
+  if (!videoDetail || !videos?.length)
     return (
       <Box sx={{ width: "100%" }}>
         <LinearProgress sx={{ backgroundColor: "#9403fc" }} />
@@ -27,40 +54,67 @@ const VideoDetail = () => {
     );
 
   const {
-    snippet: { title, channelId, channelTitle, description },
-    statistics: { viewCount, likeCount, subscriberCount },
+    snippet: { title, channelId, channelTitle, description, publishedAt },
+    statistics: { viewCount, likeCount },
   } = videoDetail;
+
+  const formattedDate = format(new Date(publishedAt), "dd-MM-yyyy");
 
   return (
     <Box minHeight="100vh">
-      <Stack direction={{ xs: "column", md: "row" }}>
-        <Box flex={1}>
-          <Box
+      <Grid container spacing={1}>
+        <Grid item xs={12} md={8}>
+          <Paper
             sx={{
-              widht: "100%",
-              position: "sticky",
-              top: "86px",
+              bgcolor: "#212121",
+              p: 1,
+              marginBottom: 1,
+              marginLeft: 1.5,
+              zIndex: 0,
             }}
           >
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${id}`}
-              className="react-player"
-              controls
-            />
-            <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
+            {/* Video player component */}
+            <div
+              sx={{
+                width: "100%",
+              }}
+            >
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${id}`}
+                className="react-player"
+                controls
+              />
+            </div>
+            {/* Video details */}
+            <Typography
+              variant="h6"
+              sx={{ marginTop: "16px", color: "#fff", mb: 2 }}
+            >
               {title}
             </Typography>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              sx={{ color: "#fff" }}
-              py={1}
-              px={2}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginTop: "8px",
+              }}
             >
-              <Link to={`/channel/${channelId}`}>
+              <Link
+                to={`/channel/${channelId}`}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <Avatar
+                  src={
+                    channelDetails?.snippet?.thumbnails?.high?.url ||
+                    demoProfilePicture
+                  }
+                  alt="Channel Logo"
+                  p={2}
+                />
+
                 <Typography
-                  variant={{ sm: "subtitle1", md: "h6" }}
-                  color="#fff"
+                  variant="subtitle1"
+                  sx={{ marginLeft: "8px", color: "#fff" }}
                 >
                   {channelTitle}
                   <CheckCircle
@@ -69,35 +123,109 @@ const VideoDetail = () => {
                 </Typography>
               </Link>
               {/* Channel stats */}
-              {subscriberCount && (
-                <Typography color="#fff">
-                  {parseInt(subscriberCount).toLocaleString()} Subscribers
-                </Typography>
-              )}
-              <Stack direction="row" gap="20px" alignItems="center">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  startIcon={<VisibilityOutlinedIcon />}
+              <div
+                style={{
+                  marginLeft: "auto",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {/* Likes */}
+                <IconButton
+                  variant="contained"
+                  size="small"
+                  aria-label="like"
+                  style={{ color: "#fff", marginLeft: "8px" }}
                 >
-                  {parseInt(viewCount).toLocaleString()} views
-                </Button>
-                <Button variant="outlined" startIcon={<ThumbUpOutlinedIcon />}>
+                  <ThumbUpAltOutlined />
+                </IconButton>
+                <Typography
+                  variant="body2"
+                  style={{ marginLeft: "4px", color: "#fff" }}
+                >
                   {parseInt(likeCount).toLocaleString()}
+                </Typography>
+
+                {/* Views */}
+                <IconButton
+                  size="small"
+                  aria-label="views"
+                  style={{
+                    color: "#fff",
+                    marginLeft: "16px",
+                    bgcolor: "#424242",
+                  }}
+                >
+                  <VisibilityOutlined />
+
+                  <Typography
+                    variant="body2"
+                    style={{
+                      marginLeft: "4px",
+                      color: "#fff",
+                    }}
+                  >
+                    {parseInt(viewCount).toLocaleString()}
+                  </Typography>
+                </IconButton>
+
+                {/* Subscriber */}
+                <Button
+                  variant="contained"
+                  size="small"
+                  aria-label="subscriber"
+                  sx={{
+                    color: "#fff",
+                    marginLeft: "15px",
+                    bgcolor: "#424242",
+                    textTransform: "none",
+                  }}
+                >
+                  <Typography sx={{ color: "white" }}>
+                    {parseInt(
+                      channelDetails?.statistics.subscriberCount
+                    ).toLocaleString()}{" "}
+                    subscribers
+                  </Typography>
                 </Button>
-              </Stack>
-            </Stack>
-          </Box>
-        </Box>
-        <Box
-          px={2}
-          py={{ md: 1, xs: 5 }}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Videos videos={videos} direction="column" />
-        </Box>
-      </Stack>
+              </div>
+            </div>
+
+            {/* Description */}
+            <div style={{ marginTop: "16px" }}>
+              <Typography
+                variant="subtitle1"
+                gutterBottom
+                style={{ color: "#fff", marginBottom: "16px" }}
+              >
+                Date Published: {formattedDate}
+              </Typography>
+              <Typography variant="body1" style={{ color: "#fff" }}>
+                {description}
+              </Typography>
+            </div>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={4} px={2} alignItems="center">
+          <Paper
+            style={{
+              backgroundColor: "#181818",
+              padding: "16px",
+              marginBottom: "16px",
+            }}
+          >
+            {/* Related videos */}
+            <Typography
+              variant="h6"
+              sx={{ color: "#fff", marginBottom: "10px" }}
+            >
+              Related Videos
+            </Typography>
+            {/* List of related videos */}
+            <Videos videos={videos} />
+          </Paper>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
