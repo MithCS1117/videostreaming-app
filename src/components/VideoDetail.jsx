@@ -63,14 +63,13 @@ const VideoDetail = () => {
   return (
     <Box minHeight="100vh">
       <Grid container spacing={1}>
-        <Grid item xs={12} md={8}>
-          <Paper
+        <Grid item sm={12} md={8}>
+          <Box
             sx={{
               bgcolor: "#212121",
               p: 1,
               marginBottom: 1,
               marginLeft: 1.5,
-              zIndex: 0,
             }}
           >
             {/* Video player component */}
@@ -109,7 +108,6 @@ const VideoDetail = () => {
                     demoProfilePicture
                   }
                   alt="Channel Logo"
-                  p={2}
                 />
 
                 <Typography
@@ -204,10 +202,10 @@ const VideoDetail = () => {
                 {description}
               </Typography>
             </div>
-          </Paper>
+          </Box>
         </Grid>
-        <Grid item xs={12} md={4} px={2} alignItems="center">
-          <Paper
+        <Grid item sm={12} md={4} px={2} alignItems="center">
+          <Box
             style={{
               backgroundColor: "#181818",
               padding: "16px",
@@ -223,7 +221,7 @@ const VideoDetail = () => {
             </Typography>
             {/* List of related videos */}
             <Videos videos={videos} />
-          </Paper>
+          </Box>
         </Grid>
       </Grid>
     </Box>
