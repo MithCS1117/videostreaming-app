@@ -19,7 +19,6 @@ import { Videos } from ".";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { demoProfilePicture } from "../utils/constants";
 
-
 const VideoDetail = () => {
   const { id } = useParams();
   const [videoDetail, setVideoDetail] = useState(null);
@@ -61,15 +60,14 @@ const VideoDetail = () => {
   const formattedDate = format(new Date(publishedAt), "dd-MM-yyyy");
 
   return (
-    <Box minHeight="100vh">
+    <Box minHeight="90vh" sx={{ maxWidth: "100%", overflowX: "hidden" }}>
       <Grid container spacing={1}>
-        <Grid item sm={12} md={8}>
+        <Grid item xs={12} md={8}>
           <Box
             sx={{
               bgcolor: "#212121",
               p: 1,
               marginBottom: 1,
-              marginLeft: 1.5,
             }}
           >
             {/* Video player component */}
@@ -121,51 +119,54 @@ const VideoDetail = () => {
                 </Typography>
               </Link>
               {/* Channel stats */}
-              <div
-                style={{
+              <Box
+                sx={{
                   marginLeft: "auto",
                   display: "flex",
                   alignItems: "center",
                 }}
               >
                 {/* Likes */}
-                <IconButton
+                <Button
                   variant="contained"
                   size="small"
                   aria-label="like"
-                  style={{ color: "#fff", marginLeft: "8px" }}
+                  sx={{
+                    color: "#fff",
+                    bgcolor: "#424242",
+                    textTransform: "none",
+                  }}
                 >
                   <ThumbUpAltOutlined />
-                </IconButton>
-                <Typography
-                  variant="body2"
-                  style={{ marginLeft: "4px", color: "#fff" }}
-                >
-                  {parseInt(likeCount).toLocaleString()}
-                </Typography>
+                  <Typography
+                    variant="body2"
+                    style={{ marginLeft: "5px", color: "#fff" }}
+                  >
+                    {parseInt(likeCount).toLocaleString()}
+                  </Typography>
+                </Button>
 
                 {/* Views */}
-                <IconButton
+                <Button
+                  variant="contained"
                   size="small"
                   aria-label="views"
-                  style={{
+                  sx={{
                     color: "#fff",
-                    marginLeft: "16px",
+                    marginLeft: "8px",
                     bgcolor: "#424242",
+                    textTransform: "none",
                   }}
                 >
                   <VisibilityOutlined />
 
                   <Typography
                     variant="body2"
-                    style={{
-                      marginLeft: "4px",
-                      color: "#fff",
-                    }}
+                    style={{ marginLeft: "5px", color: "#fff" }}
                   >
                     {parseInt(viewCount).toLocaleString()}
                   </Typography>
-                </IconButton>
+                </Button>
 
                 {/* Subscriber */}
                 <Button
@@ -174,7 +175,7 @@ const VideoDetail = () => {
                   aria-label="subscriber"
                   sx={{
                     color: "#fff",
-                    marginLeft: "15px",
+                    marginLeft: "8px",
                     bgcolor: "#424242",
                     textTransform: "none",
                   }}
@@ -186,7 +187,7 @@ const VideoDetail = () => {
                     subscribers
                   </Typography>
                 </Button>
-              </div>
+              </Box>
             </div>
 
             {/* Description */}
@@ -199,12 +200,12 @@ const VideoDetail = () => {
                 Date Published: {formattedDate}
               </Typography>
               <Typography variant="body1" style={{ color: "#fff" }}>
-                {description}
+                {description.slice(0, 1000)}...read more
               </Typography>
             </div>
           </Box>
         </Grid>
-        <Grid item sm={12} md={4} px={2} alignItems="center">
+        <Grid item xs={12} md={4} alignItems="center">
           <Box
             style={{
               backgroundColor: "#181818",
