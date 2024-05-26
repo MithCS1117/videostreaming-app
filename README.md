@@ -1,6 +1,6 @@
 # VidTube (Video Streaming App)
 
-🔗 _[ VidTube Website](https://mrs-sd.streamlit.app/)_
+🔗 _[ VidTube Website](https://vidtube-sd.vercel.app/)_
 
 [](https://vidtube-sd.vercel.app/)
 
