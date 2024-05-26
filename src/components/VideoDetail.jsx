@@ -5,7 +5,6 @@ import { Typography, Button, Box, Stack, LinearProgress } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-
 import { Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
