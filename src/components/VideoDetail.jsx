@@ -5,9 +5,7 @@ import ReactPlayer from "react-player";
 import {
   Typography,
   Box,
-  Paper,
   Grid,
-  IconButton,
   Avatar,
   LinearProgress,
   Button,

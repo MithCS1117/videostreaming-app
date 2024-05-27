@@ -1,6 +1,4 @@
 import { Stack, Box } from "@mui/material";
-import LoopIcon from "@mui/icons-material/Loop";
-import React from "react";
 import { VideoCard, ChannelCard } from "./";
 
 const Videos = ({ videos }) => {
