@@ -22,6 +22,11 @@ const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState([]);
   const [channelDetails, setChannelDetails] = useState(null);
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleExpanded = () => {
+    setExpanded(!expanded);
+  };
 
   useEffect(() => {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
@@ -197,9 +202,18 @@ const VideoDetail = () => {
               >
                 Date Published: {formattedDate}
               </Typography>
+
               <Typography variant="body1" style={{ color: "#fff" }}>
-                {description.slice(0, 1500)}...read more
+                {expanded ? description : description.slice(0, 800)}
               </Typography>
+              {description.length > 800 && (
+                <span
+                  style={{ color: "#498efc", cursor: "pointer" }}
+                  onClick={toggleExpanded}
+                >
+                  {expanded ? "read less" : "read more"}
+                </span>
+              )}
             </div>
           </Box>
         </Grid>
@@ -219,7 +233,7 @@ const VideoDetail = () => {
               Related Videos
             </Typography>
             {/* List of related videos */}
-            <Videos videos={videos} md={"350px"} lg={"500px"}/>
+            <Videos videos={videos} md={"350px"} lg={"500px"} hmd={"250px"} />
           </Box>
         </Grid>
       </Grid>
