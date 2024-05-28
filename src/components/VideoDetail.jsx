@@ -198,7 +198,7 @@ const VideoDetail = () => {
                 Date Published: {formattedDate}
               </Typography>
               <Typography variant="body1" style={{ color: "#fff" }}>
-                {description.slice(0, 1000)}...read more
+                {description.slice(0, 1500)}...read more
               </Typography>
             </div>
           </Box>
@@ -219,7 +219,7 @@ const VideoDetail = () => {
               Related Videos
             </Typography>
             {/* List of related videos */}
-            <Videos videos={videos} />
+            <Videos videos={videos} md={"350px"} lg={"500px"}/>
           </Box>
         </Grid>
       </Grid>
