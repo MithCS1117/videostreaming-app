@@ -32,7 +32,7 @@ const Navbar = () => {
           >
             <Typography variant="h4">Vid</Typography>
             <Typography variant="h4" sx={{ color: "#9403fc" }}>
-              Tub
+              Tube
             </Typography>
           </Typography>
         </Hidden>
