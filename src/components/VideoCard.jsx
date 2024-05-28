@@ -44,10 +44,11 @@ const VideoCard = ({
         <CardContent
           sx={{ backgroundColor: "#242424", height: { xs: "100px", md: hmd } }}
         >
-          <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}></Link>
-          <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
-            {videoTitle.slice(0, 60) || demoVideoTitle.slice(0, 60)}
-          </Typography>
+          <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
+            <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
+              {videoTitle.slice(0, 60) || demoVideoTitle.slice(0, 60)}
+            </Typography>
+          </Link>
 
           {/* Channel Name */}
           <Link

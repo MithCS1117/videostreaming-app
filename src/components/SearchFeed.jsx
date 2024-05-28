@@ -28,7 +28,6 @@ const SearchFeed = () => {
         Search Results for:{" "}
         <span style={{ color: "#9403fc" }}>{searchTerm}</span> videos
       </Typography>
-
       <Videos videos={videos} />
     </Box>
   );

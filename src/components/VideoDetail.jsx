@@ -204,9 +204,9 @@ const VideoDetail = () => {
               </Typography>
 
               <Typography variant="body1" style={{ color: "#fff" }}>
-                {expanded ? description : description.slice(0, 800)}
+                {expanded ? description : description.slice(0, 600)}
               </Typography>
-              {description.length > 800 && (
+              {description.length > 600 && (
                 <span
                   style={{ color: "#498efc", cursor: "pointer" }}
                   onClick={toggleExpanded}
