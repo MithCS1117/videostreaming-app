@@ -1,6 +1,6 @@
 # VidTube (Video Streaming App)
 
-![React.js](https://img.shields.io/badge/Frontend-React.js-61DAFB)![React Router](https://img.shields.io/badge/Routing-React_Router-CA4245)![Material UI 5](https://img.shields.io/badge/UI_Library-Material_UI_5-007FFF)![CSS3](https://img.shields.io/badge/CSS-FFDF6F)![Rapid API](https://img.shields.io/badge/API-Rapid_API-0055DA)![Node.js](https://img.shields.io/badge/JS_Env-Node.js-5FA04E)![React Video Player](https://img.shields.io/badge/React_Video_Player-891B26)
+![React.js](https://img.shields.io/badge/Frontend-React.js-61DAFB) ![React Router](https://img.shields.io/badge/Routing-React_Router-CA4245) ![Material UI 5](https://img.shields.io/badge/UI_Library-Material_UI_5-007FFF) ![CSS3](https://img.shields.io/badge/CSS-FFDF6F) ![Rapid API](https://img.shields.io/badge/API-Rapid_API-0055DA) ![Node.js](https://img.shields.io/badge/JS_Env-Node.js-5FA04E) ![React Video Player](https://img.shields.io/badge/React_Video_Player-891B26)
 
 🔗 _[ VidTube Website](https://vidtube-sd.vercel.app/)_
 
