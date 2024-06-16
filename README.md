@@ -2,7 +2,7 @@
 
 🔗 _[ VidTube Website](https://vidtube-sd.vercel.app/)_
 
-[](https://vidtube-sd.vercel.app/)
+![React.js](https://img.shields.io/badge/Frontend-React.js-61DAFB) ![React Router](https://img.shields.io/badge/Routing-React_Router-CA4245) ![Material UI 5](https://img.shields.io/badge/UI_Library-Material_UI_5-007FFF) ![CSS3](https://img.shields.io/badge/CSS-1E96EB) ![Rapid API](https://img.shields.io/badge/API-Rapid_API-0055DA) ![Node.js](https://img.shields.io/badge/JS_Env-Node.js-5FA04E) ![React Video Player](https://img.shields.io/badge/React_Video_Player-C70D2C) 
 
 Designed and developed a responsive single-page video streaming application using **React.js** and Material-UI. Implemented data fetching with Axios from Rapid API's YouTube v3 API. Created modular components and utilized React Router for seamless navigation. Ensured smooth video playback with React Player.
 
